@@ -1,13 +1,8 @@
-<<<<<<< HEAD
 import React, { useState, useEffect } from "react";
 import { Auth } from "aws-amplify";
 import { onError } from "./libs/errorLib";
 import { AppContext } from "./libs/contextLib";
 import { Link, useHistory } from "react-router-dom";
-=======
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
->>>>>>> c947be6e6abc76c2fbe658378cf919349ab54779
 import { LinkContainer } from "react-router-bootstrap";
 import { Nav, Navbar, NavItem } from "react-bootstrap";
 import Routes from "./Routes";

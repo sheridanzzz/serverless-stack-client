@@ -15,16 +15,13 @@ export default function Routes() {
 	  <Route exact path="/login">
         <Login />
       </Route>
-<<<<<<< HEAD
 	  <Route exact path="/signup">
         <Signup />
       </Route>
 	  <Route exact path="/ImageUpload">
         <ImageUpload />
       </Route>
-=======
 	  {/* Finally, catch all unmatched routes */}
->>>>>>> c947be6e6abc76c2fbe658378cf919349ab54779
       <Route>
         <NotFound />
       </Route>
