@@ -5,6 +5,8 @@ import ImageUpload from "./containers/ImageUpload";
 import NotFound from "./containers/NotFound";
 import Login from "./containers/Login";
 import Home from "./containers/Home";
+import Results from "./containers/Results";
+import Search from "./containers/Search";
 
 export default function Routes() {
   return (
@@ -20,6 +22,12 @@ export default function Routes() {
       </Route>
 	  <Route exact path="/ImageUpload">
         <ImageUpload />
+      </Route>
+	  <Route exact path="/Search">
+        <Search />
+      </Route>
+	  <Route exact path="/Results">
+        <Results />
       </Route>
 	  {/* Finally, catch all unmatched routes */}
       <Route>

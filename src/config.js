@@ -1,17 +1,17 @@
 export default {
 	MAX_ATTACHMENT_SIZE: 5000000,
   s3: {
-    REGION: "YOUR_S3_UPLOADS_BUCKET_REGION",
-    BUCKET: "YOUR_S3_UPLOADS_BUCKET_NAME"
+    REGION: "us-east-1",
+    BUCKET: "tagstoreimageupload"
   },
   apiGateway: {
-    REGION: "YOUR_API_GATEWAY_REGION",
-    URL: "YOUR_API_GATEWAY_URL"
+    REGION: "us-east-1",
+    URL: "https://p1o4zvmoe3.execute-api.us-east-1.amazonaws.com/dev"
   },
   cognito: {
-    REGION: "YOUR_COGNITO_REGION",
-    USER_POOL_ID: "YOUR_COGNITO_USER_POOL_ID",
-    APP_CLIENT_ID: "YOUR_COGNITO_APP_CLIENT_ID",
-    IDENTITY_POOL_ID: "YOUR_IDENTITY_POOL_ID"
+    REGION: "us-east-1",
+    USER_POOL_ID: "us-east-1_9mhvG5fhJ",
+    APP_CLIENT_ID: "5alod2rebtafa6lp2720uq2agv",
+    IDENTITY_POOL_ID: "us-east-1:b60f49d2-1ab3-4785-b2cb-42ad07e303bc"
   }
 };

@@ -3,6 +3,8 @@ import { useHistory } from "react-router-dom";
 import { FormGroup, FormControl, ControlLabel } from "react-bootstrap";
 import LoaderButton from "../components/LoaderButton";
 import { onError } from "../libs/errorLib";
+import { API } from "aws-amplify";
+import { s3Upload } from "../libs/awsLib";
 import config from "../config";
 import "./ImageUpload.css";
 
@@ -17,18 +19,29 @@ export default function ImageUpload() {
   }
 
   async function handleSubmit(event) {
-    event.preventDefault();
+  event.preventDefault();
 
-    if (file.current && file.current.size > config.MAX_ATTACHMENT_SIZE) {
-      alert(
-        `Please pick a file smaller than ${config.MAX_ATTACHMENT_SIZE /
-          1000000} MB.`
-      );
-      return;
-    }
-
-    setIsLoading(true);
+  if (file.current && file.current.size > config.MAX_ATTACHMENT_SIZE) {
+    alert(
+      `Please pick a file smaller than ${
+        config.MAX_ATTACHMENT_SIZE / 1000000
+      } MB.`
+    );
+    return;
   }
+  
+
+  setIsLoading(true);
+
+  try {
+    const attachment = file.current ? await s3Upload(file.current) : null;
+    history.push("/search");
+  } catch (e) {
+    onError(e);
+    setIsLoading(false);
+  }
+}
+
 
   return (
     <div className="ImageUpload">
