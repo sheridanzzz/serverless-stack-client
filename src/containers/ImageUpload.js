@@ -17,6 +17,10 @@ export default function ImageUpload() {
   function handleFileChange(event) {
     file.current = event.target.files[0];
   }
+  
+  function validateForm() {
+    return file.length > 0;
+  }
 
   async function handleSubmit(event) {
   event.preventDefault();
@@ -56,6 +60,7 @@ export default function ImageUpload() {
           bsSize="large"
           bsStyle="primary"
           isLoading={isLoading}
+		  disabled={!validateForm()}
         >
           Upload
         </LoaderButton>
