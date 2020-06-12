@@ -50,6 +50,14 @@ function App() {
         <Navbar.Toggle />
       </Navbar.Header>
       <Navbar.Collapse>
+        <Nav>
+          <LinkContainer to="/imageUpload">
+            <NavItem>Image Upload</NavItem>
+          </LinkContainer>
+          <LinkContainer to="/search">
+            <NavItem>Search</NavItem>
+          </LinkContainer>
+        </Nav>
         <Nav pullRight>
           {isAuthenticated
             ? <NavItem onClick={handleLogout}>Logout</NavItem>

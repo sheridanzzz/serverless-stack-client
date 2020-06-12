@@ -17,6 +17,8 @@ export default function Signup() {
   const [fields, handleFieldChange] = useFormFields({
     email: "",
     password: "",
+    firstName:"",
+    lastName:"",
     confirmPassword: "",
     confirmationCode: "",
   });
@@ -29,6 +31,8 @@ export default function Signup() {
     return (
       fields.email.length > 0 &&
       fields.password.length > 0 &&
+      fields.firstName.length > 0 &&
+      fields.lastName.length > 0 &&
       fields.password === fields.confirmPassword
     );
   }
@@ -46,6 +50,10 @@ export default function Signup() {
     const newUser = await Auth.signUp({
       username: fields.email,
       password: fields.password,
+        attributes: {
+            given_name: fields.firstName,
+            family_name: fields.lastName,
+        }
     });
     setIsLoading(false);
     setNewUser(newUser);
@@ -110,6 +118,24 @@ async function handleConfirmationSubmit(event) {
             onChange={handleFieldChange}
           />
         </FormGroup>
+          <FormGroup controlId="firstName" bsSize="large">
+              <ControlLabel>First Name</ControlLabel>
+              <FormControl
+                  autoFocus
+                  type="firstName"
+                  value={fields.firstName}
+                  onChange={handleFieldChange}
+              />
+          </FormGroup>
+          <FormGroup controlId="lastName" bsSize="large">
+              <ControlLabel>Last Name</ControlLabel>
+              <FormControl
+                  autoFocus
+                  type="lastName"
+                  value={fields.lastName}
+                  onChange={handleFieldChange}
+              />
+          </FormGroup>
         <FormGroup controlId="password" bsSize="large">
           <ControlLabel>Password</ControlLabel>
           <FormControl

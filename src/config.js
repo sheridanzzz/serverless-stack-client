@@ -2,7 +2,7 @@ export default {
 	MAX_ATTACHMENT_SIZE: 5000000,
   s3: {
     REGION: "us-east-1",
-    BUCKET: "tagstoreimageupload"
+    BUCKET: "tagstoreimgupload"
   },
   apiGateway: {
     REGION: "us-east-1",
@@ -10,8 +10,8 @@ export default {
   },
   cognito: {
     REGION: "us-east-1",
-    USER_POOL_ID: "us-east-1_9mhvG5fhJ",
-    APP_CLIENT_ID: "5alod2rebtafa6lp2720uq2agv",
-    IDENTITY_POOL_ID: "us-east-1:b60f49d2-1ab3-4785-b2cb-42ad07e303bc"
+    USER_POOL_ID: "us-east-1_aJ0Mzloxm",
+    APP_CLIENT_ID: "488ipu8jmnst22qn6arn0au8el",
+    IDENTITY_POOL_ID: "us-east-1:783e3ab4-5d96-4070-8733-269a4150a2bc"
   }
 };
