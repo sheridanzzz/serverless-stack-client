@@ -9,6 +9,7 @@
     "aws-amplify": "^3.0.17",
     "esm": "^3.2.25",
     "expo-constants": "^9.0.0",
+    "netlify-cli": "^2.53.0",
     "react": "^16.13.1",
     "react-bootstrap": "^0.33.1",
     "react-dom": "^16.13.1",
