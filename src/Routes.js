@@ -7,28 +7,30 @@ import Login from "./containers/Login";
 import Home from "./containers/Home";
 import Results from "./containers/Results";
 import Search from "./containers/Search";
+import AuthenticatedRoute from "./components/AuthenticatedRoute";
+import UnauthenticatedRoute from "./components/UnauthenticatedRoute";
 
 export default function Routes() {
   return (
     <Switch>
-      <Route exact path="/">
+      <Route  exact path="/">
         <Home />
-      </Route>
-	  <Route exact path="/login">
+      </Route >
+	  <UnauthenticatedRoute  exact path="/login">
         <Login />
-      </Route>
-	  <Route exact path="/signup">
+      </UnauthenticatedRoute >
+	  <UnauthenticatedRoute  exact path="/signup">
         <Signup />
-      </Route>
-	  <Route exact path="/ImageUpload">
+      </UnauthenticatedRoute >
+	  <AuthenticatedRoute  exact path="/ImageUpload">
         <ImageUpload />
-      </Route>
-	  <Route exact path="/Search">
+      </AuthenticatedRoute >
+	  <AuthenticatedRoute  exact path="/Search">
         <Search />
-      </Route>
-	  <Route exact path="/Results">
+      </AuthenticatedRoute >
+	  <AuthenticatedRoute  exact path="/Results">
         <Results />
-      </Route>
+      </AuthenticatedRoute >
 	  {/* Finally, catch all unmatched routes */}
       <Route>
         <NotFound />
