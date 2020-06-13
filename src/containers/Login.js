@@ -7,6 +7,7 @@ import { useAppContext } from "../libs/contextLib";
 import { useFormFields } from "../libs/hooksLib";
 import { onError } from "../libs/errorLib";
 import "./Login.css";
+import loginImg from "../user.svg";
 
 export default function Login() {
   //const history = useHistory();
@@ -39,6 +40,9 @@ export default function Login() {
   return (
     <div className="Login">
       <form onSubmit={handleSubmit}>
+        <div className="image" style={{display:"flex", justifyContent:"center", alignItems:"center"}}>
+          <img src={loginImg} alt="login" height="50%" width="50%" alignItems="center"/>
+        </div>
         <FormGroup controlId="email" bsSize="large">
           <ControlLabel>Email</ControlLabel>
           <FormControl
@@ -58,6 +62,7 @@ export default function Login() {
         </FormGroup>
         <LoaderButton
           block
+          bsStyle="primary"
           type="submit"
           bsSize="large"
           isLoading={isLoading}

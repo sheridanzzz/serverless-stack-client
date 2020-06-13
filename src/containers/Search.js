@@ -8,6 +8,7 @@ import { LinkContainer } from "react-router-bootstrap";
 import "./Search.css";
 import { Storage } from "aws-amplify";
 import {useFormFields} from "../libs/hooksLib";
+import search from "../search.svg";
 
 export default function Search() {
   const [tags, setTags] = useState("");
@@ -70,6 +71,9 @@ export default function Search() {
   return (
       <div className="Search">
         <form onSubmit={handleSubmit}>
+            <div className="image" style={{display:"flex", justifyContent:"center", alignItems:"center"}}>
+                <img src={search} alt="login" height="20%" width="20%" alignItems="center"/>
+            </div>
           <FormGroup controlId="content" bsSize="large">
             <ControlLabel>Search</ControlLabel>
             <FormControl

@@ -7,6 +7,7 @@ import { API } from "aws-amplify";
 import { s3Upload } from "../libs/awsLib";
 import config from "../config";
 import "./ImageUpload.css";
+import ImgUpload from "../img.svg";
 
 export default function ImageUpload() {
   const file = useRef(null);
@@ -50,19 +51,21 @@ export default function ImageUpload() {
   return (
     <div className="ImageUpload">
       <form onSubmit={handleSubmit}>
+        <div className="image" style={{display:"flex", justifyContent:"center", alignItems:"center"}}>
+          <img src={ImgUpload} alt="login" height="50%" width="50%" alignItems="center"/>
+        </div>
         <FormGroup controlId="file">
           <ControlLabel>Image</ControlLabel>
           <FormControl onChange={handleFileChange} type="file" />
         </FormGroup>
         <LoaderButton
-          block
           type="submit"
           bsSize="large"
           bsStyle="primary"
           isLoading={isLoading}
           //if button disabled comment code below
 		  //disabled={!validateForm()}
-        >
+         >
           Upload
         </LoaderButton>
       </form>

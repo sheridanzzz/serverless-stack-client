@@ -12,6 +12,7 @@ import { useAppContext } from "../libs/contextLib";
 import { useFormFields } from "../libs/hooksLib";
 import { onError } from "../libs/errorLib";
 import "./Signup.css";
+import signImg from "../user.svg";
 
 export default function Signup() {
   const [fields, handleFieldChange] = useFormFields({
@@ -109,6 +110,9 @@ async function handleConfirmationSubmit(event) {
   function renderForm() {
     return (
       <form onSubmit={handleSubmit}>
+          <div className="image" style={{display:"flex", justifyContent:"center", alignItems:"center"}}>
+              <img src={signImg} alt="login" height="50%" width="50%" alignItems="center"/>
+          </div>
         <FormGroup controlId="email" bsSize="large">
           <ControlLabel>Email</ControlLabel>
           <FormControl
@@ -156,6 +160,7 @@ async function handleConfirmationSubmit(event) {
           block
           type="submit"
           bsSize="large"
+          bsStyle="primary"
           isLoading={isLoading}
           disabled={!validateForm()}
         >

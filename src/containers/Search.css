@@ -1,9 +1,13 @@
 @media all and (min-width: 480px) {
   .Search {
     padding: 60px 0;
+    display: flex;
+    flex-direction: column;
   }
 
   .Search form {
+    display: flex;
+    flex-direction: column;
     margin: 0 auto;
     max-width: 320px;
   }
