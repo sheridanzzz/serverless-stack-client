@@ -26,9 +26,9 @@ export default function ImageUpload() {
   async function handleSubmit(event) {
   event.preventDefault();
 
-  if (file.current && file.current.size > config.MAX_ATTACHMENT_SIZE) {
+  if (file.current && file.current.size > config.MAX_ATTACHMENT_SIZE || file.current == null) {
     alert(
-      `Please pick a file smaller than ${
+      `Please pick a image smaller than ${
         config.MAX_ATTACHMENT_SIZE / 1000000
       } MB.`
     );

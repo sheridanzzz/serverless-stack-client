@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Button, FormGroup, FormControl, ControlLabel } from "react-bootstrap";
+import { Button, FormGroup, FormControl, ControlLabel, Image } from "react-bootstrap";
 import { PageHeader, ListGroup, ListGroupItem } from "react-bootstrap";
 import { useAppContext } from "../libs/contextLib";
 import { onError } from "../libs/errorLib";
@@ -47,14 +47,19 @@ export default function Search() {
   }
 
   function renderTagsList(tags) {
-      return tags.LINKS.map((tag, i) =>(
-            <ListGroupItem>
-                {tag}
-                {/*<img src= {tag}*/}
-                {/*     alt={tag}/>*/}
-            </ListGroupItem>
-        )
-    );
+        if (tags.LINKS && tags.LINKS.length === 0)
+        {
+            return <h4>No Results Found! </h4>
+        } else {
+            return tags.LINKS.map((tag, i) => (
+                //fluid for scaling img big
+                    <ListGroupItem>
+                        {/*{tag}*/}
+                        <Image  src= {tag} thumbnail/>
+                    </ListGroupItem>
+                )
+            );
+        }
   }
 
   function renderNotes() {
