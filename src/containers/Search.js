@@ -6,6 +6,7 @@ import { onError } from "../libs/errorLib";
 import { API } from "aws-amplify";
 import { LinkContainer } from "react-router-bootstrap";
 import "./Search.css";
+import { Storage } from "aws-amplify";
 import {useFormFields} from "../libs/hooksLib";
 
 export default function Search() {
@@ -47,7 +48,9 @@ export default function Search() {
   function renderTagsList(tags) {
       return tags.LINKS.map((tag, i) =>(
             <ListGroupItem>
-                { tag }
+                {tag}
+                {/*<img src= {tag}*/}
+                {/*     alt={tag}/>*/}
             </ListGroupItem>
         )
     );
