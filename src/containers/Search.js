@@ -11,46 +11,44 @@ import {useFormFields} from "../libs/hooksLib";
 export default function Search() {
   const [tags, setTags] = useState("");
   const [showResults, setShowResults] = React.useState(false)
-    const onClick = () => setShowResults(true)
   const [isLoading, setIsLoading] = useState(true);
+    const [content, setContent] = useState("");
   const { isAuthenticated } = useAppContext();
   const [fields, handleFieldChange] = useFormFields({
     searchText: "",
   });
 
-  async function searchTags() {
-        if (!isAuthenticated) {
-            return;
-        }
-
+    async function handleSubmit(event) {
+        event.preventDefault();
+        setIsLoading(true);
         try {
-            const tags = await loadTags();
+            const tags = await loadTags({ content });
             setTags(tags);
+            setShowResults(true)
         } catch (e) {
             onError(e);
+            setIsLoading(false);
         }
     }
 
   function loadTags() {
-      return API.get("searchTags", "/?tag=", fields.searchText);
+      return API.get("searchTags", "/?tags=" , {
+          queryStringParameters: {
+              name: content,
+          },
+      });
   }
 
 
   function validateForm() {
-    return  fields.searchText.length > 0;
+    return  content.length > 0;
   }
 
   function renderTagsList(tags) {
-    return [{}].concat(tags).map((tag, i) =>
-        i !== 0 ? (
-            <ListGroupItem header={tag.links.trim().split("\n")[0]}>
+      return tags.LINKS.map((tag, i) =>(
+            <ListGroupItem>
+                { tag }
             </ListGroupItem>
-        ): (
-              <ListGroupItem>
-                <h4>
-                  <b>{"\uFF0B"}</b> Links
-                </h4>
-              </ListGroupItem>
         )
     );
   }
@@ -60,29 +58,25 @@ export default function Search() {
         <div className="tags">
           <PageHeader>Results</PageHeader>
           <ListGroup>
-            {!isLoading && renderTagsList(tags)}
+            {renderTagsList(tags)}
           </ListGroup>
         </div>
     );
   }
 
-  function handleSubmit(event) {
-    event.preventDefault();
-  }
-
   return (
       <div className="Search">
         <form onSubmit={handleSubmit}>
-          <FormGroup controlId="searchText" bsSize="large">
+          <FormGroup controlId="content" bsSize="large">
             <ControlLabel>Search</ControlLabel>
             <FormControl
                 autoFocus
                 type="search"
-                value={fields.searchText}
-                onChange={handleFieldChange}
+                value={content}
+                onChange={e => setContent(e.target.value)}
             />
           </FormGroup>
-          <Button block bsSize="large" disabled={!validateForm()} type="submit" onClick={() => {searchTags().then(r => onClick());}}>
+          <Button block bsSize="large" disabled={!validateForm()} type="submit">
             Search
           </Button>
         </form>
