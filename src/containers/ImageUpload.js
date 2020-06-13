@@ -33,7 +33,7 @@ export default function ImageUpload() {
     );
     return;
   }
-  
+
 
   setIsLoading(true);
 
@@ -60,7 +60,8 @@ export default function ImageUpload() {
           bsSize="large"
           bsStyle="primary"
           isLoading={isLoading}
-		  disabled={!validateForm()}
+          //if button disabled comment code below
+		  //disabled={!validateForm()}
         >
           Upload
         </LoaderButton>
