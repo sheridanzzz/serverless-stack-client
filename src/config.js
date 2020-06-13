@@ -2,11 +2,11 @@ export default {
 	MAX_ATTACHMENT_SIZE: 5000000,
   s3: {
     REGION: "us-east-1",
-    BUCKET: "tagstoreimgupload"
+    BUCKET: "imguploads3-bucket"
   },
   apiGateway: {
     REGION: "us-east-1",
-    URL: "https://p1o4zvmoe3.execute-api.us-east-1.amazonaws.com/dev"
+    URL: " https://p1o4zvmoe3.execute-api.us-east-1.amazonaws.com/Develop"
   },
   cognito: {
     REGION: "us-east-1",

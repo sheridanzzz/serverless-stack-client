@@ -32,7 +32,7 @@ export default function Search() {
     }
 
   function loadTags() {
-      return API.get("searchTags", "/find-query/tags", fields.searchText);
+      return API.get("searchTags", "/?tag=", fields.searchText);
   }
 
 

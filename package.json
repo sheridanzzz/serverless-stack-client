@@ -2,6 +2,7 @@
   "name": "tagstore-app-client",
   "version": "0.1.0",
   "private": true,
+  "proxy": "https://p1o4zvmoe3.execute-api.us-east-1.amazonaws.com",
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.5.0",
