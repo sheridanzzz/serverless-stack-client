@@ -28,7 +28,7 @@ export default function ImageUpload() {
 
   if (file.current && file.current.size > config.MAX_ATTACHMENT_SIZE || file.current == null) {
     alert(
-      `Please pick a image smaller than ${
+      `Please pick a image and it must be smaller than ${
         config.MAX_ATTACHMENT_SIZE / 1000000
       } MB.`
     );
