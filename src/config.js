@@ -1,5 +1,5 @@
 export default {
-	MAX_ATTACHMENT_SIZE: 5000000,
+	MAX_ATTACHMENT_SIZE: 10000000,
   s3: {
     REGION: "us-east-1",
     BUCKET: "imguploads3-bucket"

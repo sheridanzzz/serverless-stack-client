@@ -4,11 +4,11 @@ import { PageHeader, ListGroup, ListGroupItem } from "react-bootstrap";
 import { useAppContext } from "../libs/contextLib";
 import { onError } from "../libs/errorLib";
 import { API } from "aws-amplify";
-import { LinkContainer } from "react-router-bootstrap";
 import "./Search.css";
-import { Storage } from "aws-amplify";
 import {useFormFields} from "../libs/hooksLib";
 import search from "../search.svg";
+import { S3Image } from 'aws-amplify-react';
+import { Storage } from "aws-amplify";
 
 export default function Search() {
   const [tags, setTags] = useState("");
@@ -55,7 +55,9 @@ export default function Search() {
                 //fluid for scaling img big
                     <ListGroupItem>
                         {/*{tag}*/}
-                        <Image  src= {tag} thumbnail/>
+                        <S3Image imgKey={tag.split('/')[4]} theme={{ photoImg: { width: '300px', height: '300px' } }}/>
+                        {/*<Image  src= {tag} thumbnail/>*/}
+                        {/*<a href={{tag}}>{tag}</a>*/}
                     </ListGroupItem>
                 )
             );

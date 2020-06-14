@@ -5,7 +5,6 @@ import ImageUpload from "./containers/ImageUpload";
 import NotFound from "./containers/NotFound";
 import Login from "./containers/Login";
 import Home from "./containers/Home";
-import Results from "./containers/Results";
 import Search from "./containers/Search";
 import AuthenticatedRoute from "./components/AuthenticatedRoute";
 import UnauthenticatedRoute from "./components/UnauthenticatedRoute";
@@ -27,9 +26,6 @@ export default function Routes() {
       </AuthenticatedRoute >
 	  <AuthenticatedRoute  exact path="/Search">
         <Search />
-      </AuthenticatedRoute >
-	  <AuthenticatedRoute  exact path="/Results">
-        <Results />
       </AuthenticatedRoute >
 	  {/* Finally, catch all unmatched routes */}
       <Route>
