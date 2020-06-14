@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Button, FormGroup, FormControl, ControlLabel, Image } from "react-bootstrap";
-import { PageHeader, ListGroup, ListGroupItem } from "react-bootstrap";
+import { PageHeader, ListGroup, ListGroupItem, Alert } from "react-bootstrap";
 import { useAppContext } from "../libs/contextLib";
 import { onError } from "../libs/errorLib";
 import { API } from "aws-amplify";
@@ -8,12 +8,12 @@ import "./Search.css";
 import {useFormFields} from "../libs/hooksLib";
 import search from "../search.svg";
 import { S3Image } from 'aws-amplify-react';
-import { Storage } from "aws-amplify";
+import LoaderButton from "../components/LoaderButton";
 
 export default function Search() {
   const [tags, setTags] = useState("");
   const [showResults, setShowResults] = React.useState(false)
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
     const [content, setContent] = useState("");
   const { isAuthenticated } = useAppContext();
   const [fields, handleFieldChange] = useFormFields({
@@ -27,6 +27,7 @@ export default function Search() {
             const tags = await loadTags({ content });
             setTags(tags);
             setShowResults(true)
+            setIsLoading(false);
         } catch (e) {
             onError(e);
             setIsLoading(false);
@@ -54,10 +55,12 @@ export default function Search() {
             return tags.LINKS.map((tag, i) => (
                 //fluid for scaling img big
                     <ListGroupItem>
-                        {/*{tag}*/}
                         <S3Image imgKey={tag.split('/')[4]} theme={{ photoImg: { width: '300px', height: '300px' } }}/>
-                        {/*<Image  src= {tag} thumbnail/>*/}
-                        {/*<a href={{tag}}>{tag}</a>*/}
+                        <br />
+                        <Alert variant= 'light'>
+                        Link - <a href={{tag}}>{tag}</a>
+                        </Alert>
+
                     </ListGroupItem>
                 )
             );
@@ -90,9 +93,16 @@ export default function Search() {
                 onChange={e => setContent(e.target.value)}
             />
           </FormGroup>
-          <Button block bsSize="large" disabled={!validateForm()} type="submit">
-            Search
-          </Button>
+            <LoaderButton
+                block
+                bsStyle="primary"
+                type="submit"
+                bsSize="large"
+                isLoading={isLoading}
+                disabled={!validateForm()}
+            >
+                Search
+            </LoaderButton>
         </form>
           {showResults  ? renderNotes() : null}
       </div>
